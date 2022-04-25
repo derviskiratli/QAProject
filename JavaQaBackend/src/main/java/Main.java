@@ -25,12 +25,12 @@ public class Main {
                     System.out.println("Customer email:");
                     String email = scanner.nextLine();
                     System.out.println("Customer phone number:");
-                    int phone = scanner.nextInt();
+                    String phone = scanner.nextLine();
                     customers.add(new Customer(fName, lName, email, phone));
                     break;
                 case 2:
                     for( Customer c : customers) {
-                        System.out.println(c.toString() + "\n");
+                        System.out.println(c + "\n");
                     }
                     break;
                 case 3:
@@ -40,7 +40,7 @@ public class Main {
                     for( Customer c : customers) {
                         if (c.getId() == id){
                             found = true;
-                            System.out.println(c.toString());
+                            System.out.println(c);
                         }
                     }
                     if (!found) {
@@ -83,7 +83,7 @@ public class Main {
                             c.setEmail(scanner.nextLine());
                             System.out.println("Old phone number: " + c.getPhoneNumber());
                             System.out.println("Enter new phone number");
-                            c.setPhoneNumber(scanner.nextInt());
+                            c.setPhoneNumber(scanner.nextLine());
                             updated = true;
                         }
                     }
