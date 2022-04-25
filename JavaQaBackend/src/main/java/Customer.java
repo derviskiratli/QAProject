@@ -1,5 +1,8 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Customer {
-    private int id;
+    private static final AtomicInteger count = new AtomicInteger(0);
+    private final int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -10,14 +13,11 @@ public class Customer {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.id = count.getAndIncrement();
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
