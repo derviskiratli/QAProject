@@ -6,9 +6,9 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private String phoneNumber;
+    private int phoneNumber;
 
-    public Customer(String firstName, String lastName, String email, String phoneNumber) {
+    public Customer(String firstName, String lastName, String email, int phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -44,11 +44,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
