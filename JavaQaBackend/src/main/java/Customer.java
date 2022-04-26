@@ -1,7 +1,7 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Customer {
-    private static final AtomicInteger count = new AtomicInteger(0);
+    public static int count = 0;
     private final int id;
     private String firstName;
     private String lastName;
@@ -13,7 +13,7 @@ public class Customer {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.id = count.getAndIncrement();
+        this.id = count++;
     }
 
     public int getId() {

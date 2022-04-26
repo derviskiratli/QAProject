@@ -4,13 +4,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerControllerTest {
-    CustomerController controller = new CustomerController();
+    CustomerController controller;
     Customer firstCustomer;
     Customer secondCustomer;
 
     @BeforeEach
     void setUp() {
-
+        controller = new CustomerController();
+        Customer.count =0;
         firstCustomer = new Customer("Dervis", "Kiratli", "dervis.kiratli@hotmail.com", "05888818");
         secondCustomer = new Customer("Test", "tester", "test.tester@hotmail.com", "0595894984");
         controller.getCustomers().add(firstCustomer);
