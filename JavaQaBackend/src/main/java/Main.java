@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Customer> customers = new ArrayList<Customer>();
+        CustomerController controller = new CustomerController();
         Scanner scanner = new Scanner(System.in);
         int choice;
         do{
@@ -18,80 +18,22 @@ public class Main {
             scanner.nextLine();
             switch (choice){
                 case 1:
-                    System.out.println("Customer first name:");
-                    String fName = scanner.nextLine();
-                    System.out.println("Customer last name:");
-                    String lName = scanner.nextLine();
-                    System.out.println("Customer email:");
-                    String email = scanner.nextLine();
-                    System.out.println("Customer phone number:");
-                    String phone = scanner.nextLine();
-                    customers.add(new Customer(fName, lName, email, phone));
+                    controller.addCustomer();
                     break;
                 case 2:
-                    for( Customer c : customers) {
-                        System.out.println(c + "\n");
-                    }
+                    controller.showCustomers();
                     break;
                 case 3:
-                    boolean found = false;
                     System.out.println("Enter id of customer to find:");
-                    int id = scanner.nextInt();
-                    for( Customer c : customers) {
-                        if (c.getId() == id){
-                            found = true;
-                            System.out.println(c);
-                        }
-                    }
-                    if (!found) {
-                        System.out.println("Customer not found");
-                    }
+                    controller.getCustomer(scanner.nextInt());
                     break;
                 case 4:
-                    boolean deleted = false;
-                    Customer customerToDelete = null;
                     System.out.println("Enter id of customer to delete:");
-                    id = scanner.nextInt();
-                    for( Customer c : customers) {
-                        if (c.getId() == id){
-                            deleted = true;
-                            customerToDelete = c;
-                        }
-                    }
-                    if (!deleted) {
-                        System.out.println("Customer not found");
-                    } else {
-                        customers.remove(customerToDelete);
-                        System.out.println("Customer deleted successfully");
-                    }
+                    controller.deleteCustomer(scanner.nextInt());
                     break;
                 case 5:
-                    boolean updated = false;
                     System.out.println("Enter id of customer to update:");
-                    id = scanner.nextInt();
-                    scanner.nextLine();
-                    for( Customer c : customers) {
-                        if (c.getId() == id){
-                            System.out.println("Old first name: " + c.getFirstName());
-                            System.out.println("Enter new first name");
-                            c.setFirstName(scanner.nextLine());
-                            System.out.println("Old last name: " + c.getLastName());
-                            System.out.println("Enter new last name");
-                            c.setLastName(scanner.nextLine());
-                            System.out.println("Old email: " + c.getEmail());
-                            System.out.println("Enter new email");
-                            c.setEmail(scanner.nextLine());
-                            System.out.println("Old phone number: " + c.getPhoneNumber());
-                            System.out.println("Enter new phone number");
-                            c.setPhoneNumber(scanner.nextLine());
-                            updated = true;
-                        }
-                    }
-                    if (!updated) {
-                        System.out.println("Customer not found");
-                    } else {
-                        System.out.println("Customer updated successfully");
-                    }
+                    controller.updateCustomer(scanner.nextInt());
                     break;
             }
         }
