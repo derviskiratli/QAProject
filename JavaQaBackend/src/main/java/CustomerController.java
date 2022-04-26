@@ -6,15 +6,12 @@ public class CustomerController {
     ArrayList<Customer> customers = new ArrayList<Customer>();
     Scanner scanner = new Scanner(System.in);
 
-    public Customer addCustomer(){
-        System.out.println("Customer first name:");
-        String fName = scanner.nextLine();
-        System.out.println("Customer last name:");
-        String lName = scanner.nextLine();
-        System.out.println("Customer email:");
-        String email = scanner.nextLine();
-        System.out.println("Customer phone number:");
-        String phone = scanner.nextLine();
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public Customer addCustomer(String fName, String lName, String email, String phone){
+
         Customer newCustomer = new Customer(fName, lName, email, phone);
         customers.add(newCustomer);
         return newCustomer;
@@ -26,17 +23,14 @@ public class CustomerController {
         }
     }
 
-    public void getCustomer(int id){
-        boolean found = false;
+    public Customer getCustomer(int id){
         for( Customer c : customers) {
             if (c.getId() == id){
-                found = true;
-                System.out.println(c);
+                return c;
             }
         }
-        if (!found) {
-            System.out.println("Customer not found");
-        }
+        System.out.println("Customer not found");
+        return null;
     }
 
     public void deleteCustomer(int id){
