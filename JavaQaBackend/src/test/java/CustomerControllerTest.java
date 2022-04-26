@@ -13,8 +13,6 @@ class CustomerControllerTest {
     CustomerController controller = new CustomerController();
     Customer firstCustomer;
     Customer secondCustomer;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
     @BeforeEach
     void setUp() {
@@ -23,12 +21,6 @@ class CustomerControllerTest {
         secondCustomer = new Customer("Test", "tester", "test.tester@hotmail.com", "0595894984");
         controller.getCustomers().add(firstCustomer);
         controller.getCustomers().add(secondCustomer);
-    }
-
-
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
     }
 
     @Test
@@ -64,8 +56,5 @@ class CustomerControllerTest {
     void updateCustomer() {
     }
 
-    @After
-    public void restoreStreams() {
-        System.setOut(originalOut);
-    }
+
 }
